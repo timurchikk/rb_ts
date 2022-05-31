@@ -15,7 +15,7 @@ from .serializers import UsersSerializer, UsersDetailSerializer
 
 class UsersListView(generics.ListAPIView):
     serializer_class = UsersSerializer
-    queryset = Users.objects.prefetch_related('user')
+    queryset = Users.objects.prefetch_related('user').all()
     pagination_class = LimitOffsetPagination
     filter_backends = [filters.SearchFilter]
     search_fields = ['first_name', 'last_name', 'email']
